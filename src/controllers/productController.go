@@ -161,9 +161,11 @@ func ProductsBackend(c *fiber.Ctx) error {
 	}
 
 	return c.JSON(fiber.Map{
-		"data":      data,
-		"total":     total,
-		"page":      page,
-		"last_page": total/perPage + 1,
+		"data": data,
+		"meta": fiber.Map{
+			"total":     total,
+			"page":      page,
+			"last_page": total/perPage + 1,
+		},
 	})
 }
